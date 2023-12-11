@@ -4,8 +4,21 @@ import ItemCard  from './ItemCard';
 import TextArea from './TextArea';
 import CreatedItemsTitle from './CreatedItemsTitle'
 
+
 // Environment variable for the API URL.
-const urlAPI = import.meta.env.VITE_API_URL;
+ // const urlAPI = import.meta.env.VITE_API_URL;
+
+// Define the default API endpoint.
+const DEFAULT_API = '/api/v1'; 
+
+// Parse URL parameters to potentially override the default API endpoint.
+const urlParams = new URLSearchParams(window.location.search);
+
+// Determine the API endpoint, removing any trailing slash.
+let urlAPI = (urlParams.get('api') || DEFAULT_API).replace(/\/$/, '');
+
+
+
 
 // define the NewItemForm functional component.
 function NewItemForm() {
