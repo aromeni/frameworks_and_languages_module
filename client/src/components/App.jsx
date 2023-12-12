@@ -1,5 +1,4 @@
 // Import the NewItemForm and Heading components from their respective files.
-
 import NewItemForm from "./NewItemForm"
 import Heading  from "./Heading";
 
@@ -18,5 +17,4 @@ function App() {
 
 
 // Export the App component for use in other parts of the application Eg. main.jsx
-
 export default App;

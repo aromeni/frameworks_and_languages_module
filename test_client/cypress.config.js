@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress')
 module.exports = defineConfig({
     e2e: {
+        defaultBrowser: 'chrome',
         supportFile: false,
         specPattern: 'cypress/**/*.cy.js',
         screenshotOnRunFailure: true,
