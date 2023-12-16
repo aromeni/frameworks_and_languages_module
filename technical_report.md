@@ -28,28 +28,178 @@ Critique of Server/Client prototype
 Server Framework Features
 -------------------------
 
-### (name of Feature 1)
+Server Framework Features
+=======================
 
-(Technical description of the feature - 40ish words)
-(A code block snippet example demonstrating the feature)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words)
-(Provide reference urls to your sources of information about the feature - required)
+## Midddleware
+
+Middleware is software that acts as a bridge or intermediary layer in the processing of requests and responses in a web application. It's used to modify, manage, or intercept HTTP requests and responses as they flow through the application and has certain key characteristerics such as:
+
+- Interception: Middleware has the ability to intercept both incoming requests and outgoing responses.
+
+- Modularity: It enables modular and reusable code. Different middleware functions can handle different aspects like logging, error handling, or authentication.
+
+- Chain of Responsibility: Middleware functions are typically organized in a sequence or pipeline. Each middleware function can either terminate the request-response cycle or pass control to the next middleware in the chain.
+
+- Diverse Functionalities: Common uses include handling static files, parsing request bodies, managing sessions, implementing CORS, logging, and more.
+
+### Middlewaer in NestJS
+NestJS, while built on ExpressJS (or Fastify), provides a more structured and modular approach to middleware, aligning with its overall architecture that's heavily influenced by Angular.
+
+- Class-based Middleware: In NestJS, middleware can be class-based, offering more structure and reusability. Middleware classes implement the NestMiddleware interface.
+- Signature: use(req: Request, res: Response, next: Function) { ... }
+- Module-based Organization: Middleware in NestJS is typically associated with modules, allowing for better organization and scope management.
+- Dependency Injection: NestJS middleware supports dependency injection, making it easier to integrate other services or providers.
+- Route Binding: Middleware can be bound to specific routes or globally to all routes within a module.
+
+NestJS
+```Javascript
+@Module({...})
+export class AppModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer
+            .apply(LoggerMiddleware)
+            .forRoutes(CatsController);
+    }
+}
+```
+
+### Middleware in ExpressJS
+In ExpressJS, middleware is a function that has access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle. It's used for executing code, making changes to the request and the response objects, ending the request-response cycle, or calling the next middleware in the stack.
+
+- Signature: function(req, res, next) { ... }
+Use Cases: Logging, body parsing, authentication, error handling.
+- Execution: Middleware functions are executed sequentially as they are defined in the application, using app.use() or router.use().
+- Asynchronous Operations: Middleware can handle async operations and ensure the next middleware is called only after async tasks are completed.
 
 
-### (name of Feature 2)
 
-(Technical description of the feature - 40ish words)
-(A code block snippet example demonstrating the feature)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words)
-(Provide reference urls to your sources of information about the feature - required)
+ExpressJS
+```javaScript
+app.use(express.json()); // Parses incoming JSON requests
+
+```
 
 
-### (name of Feature 3)
+- Problem Middleware Solves: It manages cross-cutting concerns (like logging, authentication, request parsing) in web applications. "Cross-cutting concerns" are aspects of a program that affect multiple components of the system, often in a non-modular manner.
 
-(Technical description of the feature - 40ish words)
-(A code block snippet example demonstrating the feature)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words)
-(Provide reference urls to your sources of information about the feature - required)
+- Why It Solves This Problem: Middleware functions as an intermediary layer in the request-response cycle, allowing for sequential execution and modification of HTTP requests and responses.
+
+- Benefits: This approach enhances code maintainability and efficiency by promoting modularity and reusability, and by cleanly separating these functionalities from the core business logic.
+
+
+#### ExpressJS:
+- https://expressjs.com/en/guide/using-middleware.html
+#### NestJS:
+- https://docs.nestjs.com/middleware
+
+
+
+## Cross-Origin Resource Sharing (CORS) Handling
+
+
+CORS is a security feature that allows or restricts web applications from making requests to a domain different from the domain from which the first resource was served. In technical terms, CORS involves adding specific HTTP headers to inform the browser whether requests to a different domain are allowed. This is crucial for APIs consumed by web applications hosted on different domains.
+
+ Found in http_server.py
+```python
+RESPONSE_DEFAULTS = {
+    'Access-Control-Allow-Origin': '*',
+    # Other defaults...
+}
+```
+A basic CORS handling implemented by setting the Access-Control-Allow-Origin header directly in your HTTP response.
+
+ExpressJS uses the cors middleware for more configurable CORS handling.
+
+```javascript
+const cors = require('cors');
+const app = require('express')();
+
+app.use(cors());
+```
+NestJS allows CORS configuration in the main.ts file when bootstrapping the application.
+
+```javascript
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.enableCors(); // Enable CORS with default settings
+  await app.listen(3000);
+}
+bootstrap();
+```
+
+- Problem Solved: CORS addresses the security limitations imposed by the same-origin policy, which restricts how a document or script from one origin can interact with resources from another origin.
+- Why It's Important: It allows for safe and controlled access of web resources across different domains, essential for modern web applications that rely on APIs and services hosted separately from their main domain.
+- Benefits: Enhances security while providing flexibility for cross-origin requests, essential for API-driven web apps.
+Potential Issues: If not configured properly, CORS can either expose the server to security risks or be overly restrictive, hindering legitimate cross-origin requests.
+
+
+#### ExpressJS:
+- https://expressjs.com/en/resources/middleware/cors.html
+#### NestJS:
+- https://docs.nestjs.com/security/cors#getting-started
+
+
+
+## Basic Routing
+
+Routing was implemented by manually parsing the URL and method in your server code. 
+
+```python
+# Example from your custom server implementation
+if __name__ == "__main__":
+    #... setup code
+    if request.path == '/' and request.method == 'GET':
+        # handle home route
+```
+This code implementation addressed some key features, albeit in a more rudimentary way compared say ExpressJS and NestJS which provide  a structured and more feature-rich approaches.
+
+
+ExpressJS provides a structured way to define routes.
+
+```javascript
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => res.send('Home Page'));
+app.post('/item', (req, res) => {
+    // handle POST request to '/item'
+});
+```
+
+NestJS uses decorators for clean and expressive routing.
+
+```typescript
+import { Controller, Get, Post } from '@nestjs/common';
+
+@Controller()
+export class AppController {
+    @Get()
+    getHome() {
+        return 'Home Page';
+    }
+
+    @Post('/item')
+    createItem() {
+        // handle POST request to '/item'
+    }
+}
+```
+
+For a technical description, routing in web frameworks refers to the mechanism that maps incoming HTTP requests to specific handlers based on the request path (URL) and method (GET, POST, etc.). It involves defining paths or patterns and associating them with functions or methods that execute when a request matches these patterns. This allows developers to design how the application responds to different client requests at various endpoints.
+- Problem Solved: Routing addresses the challenge of directing user requests to the correct processing logic, organizing different actions based on URL patterns and HTTP methods.
+- Why It's Important: Essential for creating a navigable web application, allowing for a structured approach to handle different user actions and requests.
+- Benefits: Improves the organization and maintainability of web applications, enabling clear and logical structuring of different application functionalities. It is crucial for RESTful API design, allowing for clean and intuitive endpoint structures.
+- Potential Issues: Without a well-structured routing system, a web application can become difficult to navigate and maintain, leading to potential confusion in request handling and increased risk of errors.
+
+
+#### ExpressJS:
+- https://expressjs.com/en/guide/routing.html
+#### NestJS:
+- https://docs.nestjs.com/controllers#routing
 
 
 Server Language Features
