@@ -204,21 +204,54 @@ For a technical description, routing in web frameworks refers to the mechanism t
 
 Server Language Features
 -----------------------
+Server Language Features
+-----------------------
 
-### (name of Feature 1)
+### Decorators in NestJS
 
-(Technical description of the feature - 40ish words)
-(A code block snippet example demonstrating the feature)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words)
-(Provide reference urls to your sources of information about the feature - required)
+Decorators in NestJS are a TypeScript feature used to modify the behaviour of classes or properties without altering the actual code. Decorators are used extensively in NestJS for routing, dependency injection, and module configuration.Decorators use the form @expression, where expression must evaluate to a function that will be called at runtime with information about the decorated declaration.
 
+```typescript
+@Controller('users')
+export class UsersController {
+    @Get()
+    findAll() {
+        // ...
+    }
+}
+```
+##### Problem Solving / Benefits:
 
-### (name of Feature 2)
+Decorators in TypeScript, utilized extensively in frameworks like NestJS, address the challenge of cleanly and declaratively enhancing classes and their members with additional behaviors or configurations, without intruding into the core logic. This approach solves the problem of code clutter and complexity that often arises from embedding auxiliary functionalities directly into business logic. By enabling a more modular, maintainable, and intuitive code structure, decorators greatly enhance the developer's ability to express intent and functionality in a readable and reusable manner, significantly improving both the development process and the quality of the resulting code.
+Decorators provide a declarative and concise way to add metadata and functionality to classes, enhancing readability and maintainability.
 
-(Technical description of the feature - 40ish words)
-(A code block snippet example demonstrating the feature)
-(Explain the problem-this-is-solving/why/benefits/problems - 40ish words)
-(Provide reference urls to your sources of information about the feature - required)
+Reference URLs:
+- https://www.typescriptlang.org/docs/handbook/decorators.html
+- https://docs.nestjs.com/controllers
+
+###  Async/Await (Both in ExpressJS and NestJS)
+
+Technically, Async/Await is a syntactical feature in JavaScript for handling asynchronous operations in a more readable and synchronous manner. It allows developers to write code that handles promises without the need for callbacks, reducing nesting and improving readability.
+
+```javascript
+// ExpressJS example
+app.get('/data', async (req, res) => {
+    try {
+        const data = await getData();
+        res.send(data);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+```
+
+#### Problem it's Solving / Benefits:
+- Async/Await in JavaScript fundamentally solves the problem of complexity in handling asynchronous operations. It transforms the way asynchronous code is written and managed, moving away from the often convoluted and hard-to-maintain callback patterns or nested promises. By allowing developers to write asynchronous code in a style that mimics synchronous code, Async/Await enhances readability, simplifies error handling, and makes the overall code structure more intuitive and maintainable. This feature represents a significant advancement in writing clean and efficient JavaScript code, especially in server-side environments like Node.js used in ExpressJS and NestJS
+- Simplifies handling of asynchronous operations, making code more readable and maintainable by avoiding callback hell and improving error handling.
+
+Reference URLs:
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+- https://zellwk.com/blog/async-await-express/
 
 
 
