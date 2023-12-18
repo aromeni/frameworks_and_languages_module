@@ -1,7 +1,10 @@
 Technical Report
 ================
 
-(intro describing purpose of report - 200ish words)
+The purpose of this report is to analyse and evaluate a server/client prototype created without web development frameworks. The implications, challenges, and potential drawbacks of a "framework-less" development style have been carefully examined in this prototype. The report highlights crucial areas where the lack of frameworks affects application development, including maintainability, scalability, efficiency, and security.\
+Modern web development has witnessed the emergence of frameworks such as Flask, React, Vue.js, and Express.js, which have become essential instruments for constructing complex web applications in a methodical, secure, and efficient fashion. These components offer critical functionalities, including security measures, component-based architectures, middleware integration, and state management, that are indispensable for the development of advanced and user-centric applications. By contrasting the framework-less implementation with these industry standards, this report aims to highlight the advantages and efficiencies that frameworks bring about.\
+The analysis presented in this report is rooted in a detailed examination of specific issues identified in both the client and server sides of the prototype. Each issue has been scrutinized with code examples, explaining why certain patterns or practices may be problematic, especially when compared to their counterparts in framework-based implementations.This report's overarching objective is to offer informative advice for embracing development approaches that are more resilient and scalable, in line with modern web development standards, while simultaneously criticising the framework-less approach. All things considered, this will help make online apps safer, faster, and of higher quality.
+
 
 
 Critique of Server/Client prototype
