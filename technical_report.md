@@ -1,11 +1,13 @@
 Technical Report
 ================
 
-The purpose of this report is to analyse and evaluate a server/client prototype created without web development frameworks. The implications, challenges, and potential drawbacks of a "framework-less" development style have been carefully examined in this prototype. The report highlights crucial areas where the lack of frameworks affects application development, including maintainability, scalability, efficiency, and security.\
-Modern web development has witnessed the emergence of frameworks such as Flask, React, Vue.js, and Express.js, which have become essential instruments for constructing complex web applications in a methodical, secure, and efficient fashion. These components offer critical functionalities, including security measures, component-based architectures, middleware integration, and state management, that are indispensable for the development of advanced and user-centric applications. By contrasting the framework-less implementation with these industry standards, this report aims to highlight the advantages and efficiencies that frameworks bring about.\
-The analysis presented in this report is rooted in a detailed examination of specific issues identified in both the client and server sides of the prototype. Each issue has been scrutinized with code examples, explaining why certain patterns or practices may be problematic, especially when compared to their counterparts in framework-based implementations.This report's overarching objective is to offer informative advice for embracing development approaches that are more resilient and scalable, in line with modern web development standards, while simultaneously criticising the framework-less approach. All things considered, this will help make online apps safer, faster, and of higher quality.
+The purpose of this report is to analyse and evaluate a server/client prototype created without web development frameworks. The implications, challenges, and potential drawbacks of a "framework-less" development style have been carefully examined in this prototype. The report highlights crucial areas where the lack of frameworks affects application development, including maintainability, scalability, efficiency, and security.
 
+In an era where web development frameworks like Flask, React, Vue.js, and Express.js have become fundamental tools for developers, this report scrutinizes how their absence can hinder the development process. These frameworks provide essential features – robust security, modular architectures, middleware, and efficient state management – which are pivotal for crafting sophisticated, user-oriented web applications.
 
+By examining specific shortcomings in the framework-less prototype and comparing them with framework-supported methodologies, the report delineates the operational benefits and enhanced productivity provided by modern frameworks. The critique encompasses a thorough investigation of issues on both the client and server sides, including illustrative code snippets and discussions on why certain practices fall short of framework-based standards.
+
+The ultimate aim of this discourse is to guide a shift towards more robust and scalable development methods that align with contemporary web development protocols. The insights offered herein advocate for methodologies that elevate the security, performance, and quality of web applications, steering clear of the pitfalls associated with a framework-less approach.
 
 
 Critique of Server/Client prototype
@@ -252,7 +254,7 @@ Server Language Features
 
 ### Decorators in NestJS
 
-Decorators in NestJS are a TypeScript feature used to modify the behaviour of classes or properties without altering the actual code. Decorators are used extensively in NestJS for routing, dependency injection, and module configuration.Decorators use the form @expression, where expression must evaluate to a function that will be called at runtime with information about the decorated declaration.
+Decorators in NestJS are a TypeScript feature used to modify the behaviour of classes or properties without altering the actual code. Decorators are used extensively in NestJS for routing, dependency injection, and module configuration. Decorators use the form @expression, where expression must evaluate to a function that will be called at runtime with information about the decorated declaration.
 
 ```typescript
 @Controller('users')
@@ -265,8 +267,7 @@ export class UsersController {
 ```
 ##### Problem Solving / Benefits:
 
-Decorators in TypeScript, utilized extensively in frameworks like NestJS, address the challenge of cleanly and declaratively enhancing classes and their members with additional behaviors or configurations, without intruding into the core logic. This approach solves the problem of code clutter and complexity that often arises from embedding auxiliary functionalities directly into business logic. By enabling a more modular, maintainable, and intuitive code structure, decorators greatly enhance the developer's ability to express intent and functionality in a readable and reusable manner, significantly improving both the development process and the quality of the resulting code.
-Decorators provide a declarative and concise way to add metadata and functionality to classes, enhancing readability and maintainability.
+- Decorators in TypeScript, utilized extensively in frameworks like NestJS, address the challenge of cleanly and declaratively enhancing classes and their members with additional behaviours or configurations, without intruding into the core logic. They offer a streamlined way to augment classes with additional behaviour without complicating core logic.  They reduce code clutter, foster modularity, and improve maintainability. By allowing succinct and clear expression of extended functionalities, decorators refine the development process and enhance code quality.
 
 Reference URLs:
 - https://www.typescriptlang.org/docs/handbook/decorators.html
@@ -289,8 +290,9 @@ app.get('/data', async (req, res) => {
 ```
 
 #### Problem it's Solving / Benefits:
-- Async/Await in JavaScript fundamentally solves the problem of complexity in handling asynchronous operations. It transforms the way asynchronous code is written and managed, moving away from the often convoluted and hard-to-maintain callback patterns or nested promises. By allowing developers to write asynchronous code in a style that mimics synchronous code, Async/Await enhances readability, simplifies error handling, and makes the overall code structure more intuitive and maintainable. This feature represents a significant advancement in writing clean and efficient JavaScript code, especially in server-side environments like Node.js used in ExpressJS and NestJS
-- Simplifies handling of asynchronous operations, making code more readable and maintainable by avoiding callback hell and improving error handling.
+- Async/Await in JavaScript addresses the intricacies of asynchronous programming by streamlining the code into a cleaner, synchronous-like flow. It moves developers away from the tangles of callbacks and nested promises, enhancing code clarity and error management. This advancement is pivotal in server-side environments, like those using Node.js, by enabling more readable and maintainable code structures, significantly improving development efficiency.
+Basically, simplifies handling of asynchronous operations, making code more readable and maintainable by avoiding callback hell and improving error handling.
+
 
 Reference URLs:
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
@@ -301,8 +303,6 @@ Reference URLs:
 Client Framework Features
 -------------------------
 
-Client Framework Features
--------------------------
 
 ### Reactive Data Binding in Vue.JS
 
@@ -320,7 +320,9 @@ data() {
 ```
 ### Problem being solved
 
-Vue.js's Reactive Data Binding tackles the challenge of keeping the user interface in sync with application data. It eliminates the need for manual DOM updates, a process that can be error-prone and cumbersome, particularly in complex applications. By automatically updating the DOM when data changes, Vue.js streamlines UI development, making it more efficient and less error-prone. This reactive approach ensures a seamless and dynamic user experience, where changes in data are immediately reflected in the UI, enhancing both developer productivity and user interaction.
+- Vue.js's Reactive Data Binding addresses the task of maintaining synchronisation between the user interface and application data.
+It removes manual DOM changes, which may be error-prone and time-consuming in complicated systems. Vue.js makes UI development faster and safer by updating the DOM as data changes. This reactive technique provides a smooth and dynamic user experience by rapidly reflecting data changes in the UI, improving developer productivity and user interaction.
+
 
 
 ### Reference Url:
@@ -343,7 +345,7 @@ const [formData, setFormData] = useState({
 
 ### Problem being solved
 
-React's "State Management with Hooks" addresses the challenge of managing and isolating state within functional components in a straightforward and intuitive manner. Prior to hooks, managing state and other React features like lifecycle methods were mostly confined to class components, leading to more complex code and less flexibility in structuring components. Hooks introduced a way to use state and other React features in functional components, simplifying component logic and enabling a more functional style of writing components. This shift enhances the modularity and reusability of components, making the codebase cleaner, more maintainable, and easier to test, thereby solving key challenges in component-based architecture and state management in modern web application development.
+- React Hooks streamline state management within functional components, overcoming the complexities of class-based architecture. They provide an elegant and efficient means to handle state and life-cycle events, which previously led to convoluted code structures. The introduction of Hooks has paved the way for a more intuitive and maintainable codebase, promoting flexibility and facilitating testing—addressing fundamental issues in state management for contemporary web applications.
 
 ### Reference Url:
 - https://legacy.reactjs.org/docs/hooks-intro.html
@@ -351,8 +353,7 @@ React's "State Management with Hooks" addresses the challenge of managing and is
 
 
 ###  Props and Component Composition in React.JS
-Technical Description:
-React.js uses props (short for properties) to pass data and event handlers to components. This feature, coupled with component composition, enables the building of complex UIs from smaller, reusable components.
+Technically, React.js uses props (short for properties) to pass data and event handlers to components. This feature, coupled with component composition, enables the building of complex UIs from smaller, reusable components.
 - Code Snippet:
 
 ```jsx
@@ -367,13 +368,13 @@ function ItemCard({ item, onDelete }) {
 ```
 ### Problem being solved
 
-In traditional web development, managing interdependent UI elements often leads to tangled, hard-to-maintain code. Props and Component Composition in React are designed to solve the problem of building complex user interfaces in a scalable and maintainable way. React's approach allows developers to construct UIs from smaller, isolated components that communicate via props. This design promotes reusability, as components can be used in different contexts with different data. It also enhances the separation of concerns, as each component manages its own functionality and state, making the overall application easier to understand, debug, and maintain. Essentially, this architecture addresses the complexities of UI development by enabling a modular, component-based approach.
+- In traditional web development, managing interdependent UI elements often leads to tangled, hard-to-maintain code.
+React's component architecture, empowered by props, elegantly resolves the intricacies of UI construction, enabling developers to create scalable interfaces from self-contained components. This modularity fosters reusability and clarity, ensuring components are both isolated and interoperable. This paradigm not only streamlines development but also fortifies the maintainability of complex UIs, offering a clear structure for easier debugging and enhancement.
+
 
 
 ### Reference Url:
 - https://legacy.reactjs.org/docs/components-and-props.html
-
-
 
 
 
@@ -399,7 +400,7 @@ methods: {
 
 ### Problem being solved/Benefit
 
-Vue.js Methods are specifically designed to solve the problem of organizing and managing interactive logic within a component. In web development, handling user interactions and other dynamic behaviors often leads to scattered and convoluted code, making it challenging to maintain and understand. Vue.js Methods address this by providing a clear and structured way to encapsulate such imperative logic. They allow developers to define functions that handle user actions, computations, or any side effects separately from the template. This separation not only enhances code readability and organization but also centralizes the action logic, making the components more self-contained and easier to manage. The benefit is a cleaner, more intuitive, and maintainable codebase, where the functionalities and interactions are clearly delineated within the component structure.
+- Vue.js Methods are design to address the challenge of embedding interactive logic directly within component templates, which can lead to disorganized and hard-to-debug code. They offer a way to define behaviours and actions separately, simplifying component logic and promoting a cleaner, more maintainable codebase. This approach resolves issues of code complexity and enhances the development experience by allowing for more organized and intuitive interaction handling within components.
 
 ### Reference Url:
 - https://vuejs.org/guide/essentials/event-handling.html#method-event-handlers
@@ -427,15 +428,14 @@ function ItemCard({ item, onDelete }) {
 ```
 
 ### Problem being solved/Benefit
-JSX in React directly addresses the problem of how to intuitively integrate UI templates with JavaScript logic in the development of web interfaces. In traditional web development, intertwining HTML and JavaScript often leads to complex and less readable code. JSX simplifies this integration, allowing for a more natural and seamless combination of markup and logic. This leads to more readable, maintainable, and intuitive code, significantly enhancing the developer's experience and productivity in building complex user interfaces. The benefit is a more streamlined and efficient development process, particularly for complex component-based UIs.
+- JSX resolves the intricacies of UI creation within JavaScript, replacing clunky createElement calls with an HTML-like syntax for better readability and maintainability. It streamlines the development experience, reduces errors, and merges JavaScript logic with UI markup effectively, leading to cleaner code and a more productive build process.
 
 ### Reference Url:
 - https://legacy.reactjs.org/docs/introducing-jsx.html
 - https://legacy.reactjs.org/docs/jsx-in-depth.html
 
 ### Template Directives in Vue.js
-Technically, Vue.js employs template directives – special tokens in the markup that instruct the framework to do something to a DOM element. These include directives like v-if for conditional rendering, v-for for rendering lists, and v-model for two-way data binding, among others. They are powerful tools for directly manipulating the DOM based on the component's state.
-Template directives are a fundamental aspect of Vue.js, offering a straightforward and elegant way to interact with the DOM. They encapsulate complex logic in simple, readable syntax, streamlining the process of building dynamic and responsive web interfaces
+Technically, Vue.js's template directives are syntactical markers that command the framework to perform actions on DOM elements dynamically. Directives such as `v-if` for conditional displays, `v-for` for list rendering, and `v-model` for creating two-way bindings, allow developers to declaratively link the DOM to the application's reactive state. This mechanism abstracts away direct DOM manipulation, enabling a more intuitive and maintainable approach to crafting interactive and responsive user interfaces.
 - Code Snippet Example:
 
 ```html
@@ -444,7 +444,7 @@ Template directives are a fundamental aspect of Vue.js, offering a straightforwa
 
 ### Problem being solved/Benefit
 
-Template directives in Vue.js specifically solve the problem of managing dynamic DOM updates in a clear and efficient manner. Traditional approaches to manipulating the DOM, especially in response to changing application state, often involve verbose and complex JavaScript code. This can lead to a codebase that's difficult to maintain and prone to errors. Vue.js's template directives offer a declarative way to handle these dynamic changes - whether it's showing or hiding elements based on conditions, rendering lists of data, or creating two-way data bindings. This approach streamlines the development process, significantly reducing the amount of boilerplate code required and making the code more readable and maintainable. The benefit is a more intuitive and efficient way to build interactive and dynamic UIs, enhancing both developer productivity and the overall quality of the web application.
+Vue.js template directives tackle the complexities of managing dynamic DOM updates, in a clear and efficient manner, eliminating the need for verbose JavaScript code that complicates maintenance and increases error risk. They provide a declarative approach to UI changes, automating the rendering process based on state variations. This streamlined method reduces boilerplate, enhances code clarity, and simplifies the creation of interactive interfaces, boosting developer productivity and application quality.
 
 
 
