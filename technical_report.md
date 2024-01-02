@@ -16,7 +16,7 @@ Critique of Server/Client prototype
 ### Overview
 The critique of the framework-less server/client prototype reveals several key issues impacting both the client-side and server-side code. These issues stem primarily from the absence of the structured approach and features provided by modern frameworks.
 
-### Name of Issue: Lack of Middleware for Common Tasks (Server-Side Issue)
+### Name of Issue 1: Lack of Middleware for Common Tasks (Server-Side Issue)
 
 Code Snippet Example:
 ```python
@@ -29,7 +29,7 @@ Why This Pattern Is Problematic:
 
 
 
-### Name of Issue: Lack of State Management (Client-Side Issues)
+### Name of Issue 2: Lack of State Management (Client-Side Issues)
 
 Code Snippet Example:
 ```javascript
@@ -43,7 +43,7 @@ Why This Pattern Is Problematic:
 - The absence of a structured state management system can lead to scattered and uncoordinated state updates, making the application's data flow hard to track and debug. It becomes challenging to manage complex states, particularly in interactive applications, leading to potential data inconsistencies and a decrease in code maintainability.
 
 
-### Name of Issue: Manual DOM Manipulation (Client-Side Issue)
+### Name of Issue 3: Manual DOM Manipulation (Client-Side Issue)
 
 Code Snippet:
 ```javascript
@@ -59,7 +59,7 @@ Why This Pattern Is Problematic:
 
 
 
-### Name of Issue: Inefficient Request Handling( Server-Side Issue)
+### Name of Issue 4: Inefficient Request Handling( Server-Side Issue)
 
 Code Snippet:
 
@@ -71,17 +71,6 @@ def serve_app(func_app, port, host=''):
 Why This Pattern Is Problematic:
 - Manually handling HTTP requests and responses can be inefficient and error-prone. This approach lacks the optimizations and conveniences offered by established server frameworks, such as automatic request parsing, content negotiation, and standardized error handling. It can lead to repetitive code and makes it harder to ensure consistency and reliability in request handling.
 
-
-
-
-
-### Name of Issue: Security Concerns
-Code Snippet:
-```python
-# Implementation of HTTP server and handling of requests
-```
-Why This Pattern Is Problematic:
-- Framework-less implementations generally neglect input validation, SQL injection, XSS prevention, and error handling. For safe application development, frameworks usually provide built-in security capabilities or easy-to-integrate security extensions.
 
 
 
@@ -104,9 +93,6 @@ Server Framework Features
 HTTP requests and answers are modified, managed, and intercepted by web application middleware. Its ability to intercept data both ways improves code modularity by allowing function reuse across logging, error handling, and authentication. Middleware functions establish a chain of responsibility where each function can end the request-response cycle or pass control. This system handles static files, parses request bodies, manages sessions, implements CORS, and logs, improving web application performance and scalability.
 
 ### Middleware in NestJS
-NestJS's class-based, module-integrated middleware improves ExpressJS. This solution offers reusable middleware and module-based design for improved organization. Dependency injection for smooth service integration and flexible middleware binding to particular routes or whole modules optimize web application development and administration.
-
-
 
 NestJS
 ```Javascript
@@ -121,9 +107,6 @@ export class AppModule {
 ```
 
 ### Middleware in ExpressJS
-In ExpressJS, middleware functions (function(req, res, next) {... }) regulate the request-response cycle by accessing and altering request and response objects and directing flow to future middleware. For logging, parsing, authentication, and error handling, they operate sequentially and handle asynchronous actions well, maintaining app pipeline smoothness.
-
-
 
 ExpressJS
 ```javaScript
@@ -132,7 +115,7 @@ app.use(express.json()); // Parses incoming JSON requests
 ```
 
 
- Problem Middleware Solves:
+ Problem Middleware is trying to Solve:
  ------------------------- 
 - Web middleware effectively handles cross-cutting issues like logging, authentication, error handling, and request processing that affect many system components. Middleware centralises these functions to reduce code duplication and inconsistency, improving maintainability. It simplifies the application's design to ensure important actions are handled consistently across components without burdening the business logic.
 
@@ -181,8 +164,8 @@ bootstrap();
 ```
 
 
-Problem Solving
---------------
+Problem CORS is trying to Solve
+-------------------------------
 
 CORS resolves the web's same-origin policy restrictions that limit resource sharing across domains, balancing security with functionality. It permits web apps to safely request external resources, ensuring seamless integration of disparate services while upholding security through controlled HTTP headers.
 
@@ -290,7 +273,7 @@ app.get('/data', async (req, res) => {
 });
 ```
 
-#### Problem it's Solving / Benefits:
+#### Problem Async/Await is Solving / Benefits:
 - Async/Await in JavaScript simplifies asynchronous programming, eliminating complex callbacks for a cleaner, more straightforward code flow. This key advancement, especially crucial in server-side Node.js environments, enhances code readability and maintainability, and streamlines error handling—vastly improving development efficiency.
 
 
@@ -379,34 +362,6 @@ function ItemCard({ item, onDelete }) {
 ### Reference Url:
 - https://legacy.reactjs.org/docs/components-and-props.html
 
-
-
-### Methods in Vue.JS
-
-Technically, Vue.js provides a methods option for defining functions that can be used in the component's template. These methods often involve changing the state, handling events, or implementing complex logic that can be triggered in the template.
-
-
-- Code Snippet:
-```javascript
-methods: {
-    create_item() {
-        // Logic to create an item
-        // ...
-    },
-    deleteItem(id) {
-        // Logic to delete an item
-        // ...
-    },
-    // Other methods...
-}
-```
-
-### Problem being solved/Benefit
-
-- Vue.js's methods tackle the problem of embedding complex logic in templates, which can clutter and complicate code. They allow developers to separate concerns, defining behaviours and actions externally to streamline logic and improve maintainability. This simplifies debugging and enhances the development experience by providing a more organized approach to handling interactions within components.
-
-### Reference Url:
-- https://vuejs.org/guide/essentials/event-handling.html#method-event-handlers
 
 
 Client Language Features
