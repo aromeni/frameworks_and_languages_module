@@ -23,6 +23,8 @@ Code Snippet Example:
 def serve_app(func_app, port, host=''):
     # Code setup for serving the app, handling requests manually
 ```
+https://github.com/aromeni/frameworks_and_languages_module/blob/bb86f3f05a9f95303eb98a144ab9de07ca038f4f/example_server/app/http_server.py#L99-L100
+
 Why This Pattern Is Problematic:
 - Server-side code without middleware for logging, error handling, and request processing is verbose and inefficient. This method needs manual implementation of similar functionality across routes, adding complexity and redundancy. The lack of modular, simplified middleware in popular frameworks makes maintenance onerous and reduces scalability and efficiency.
 
@@ -38,6 +40,7 @@ function create_item(event) {
     post_item(get_item_data_from_form_element(event.target.parentElement));
 }
 ```
+https://github.com/aromeni/frameworks_and_languages_module/blob/bb86f3f05a9f95303eb98a144ab9de07ca038f4f/example_client/index.html#L343-L344
 
 Why This Pattern Is Problematic:
 - The absence of a structured state management system can lead to scattered and uncoordinated state updates, making the application's data flow hard to track and debug. It becomes challenging to manage complex states, particularly in interactive applications, leading to potential data inconsistencies and a decrease in code maintainability.
@@ -53,6 +56,7 @@ function renderItems(data) {
     // Further DOM manipulations...
 }
 ```
+https://github.com/aromeni/frameworks_and_languages_module/blob/bb86f3f05a9f95303eb98a144ab9de07ca038f4f/example_client/index.html#L402
 
 Why This Pattern Is Problematic:
 - Manual DOM manipulation, as seen in the example, may lead to complex, hard-to-maintain code as the programme expands. Explicitly addressing each UI update increases the possibility of inconsistencies and bugs/problems. It lacks the efficiency and clarity of current reactive UI update mechanisms, making the code less scalable and harder to work with.
@@ -67,6 +71,7 @@ Code Snippet:
 def serve_app(func_app, port, host=''):
     # Handling requests and responses manually
 ```
+https://github.com/aromeni/frameworks_and_languages_module/blob/bb86f3f05a9f95303eb98a144ab9de07ca038f4f/example_server/app/http_server.py#L99-L100
 
 Why This Pattern Is Problematic:
 - Manually handling HTTP requests and responses can be inefficient and error-prone. This approach lacks the optimizations and conveniences offered by established server frameworks, such as automatic request parsing, content negotiation, and standardized error handling. It can lead to repetitive code and makes it harder to ensure consistency and reliability in request handling.
@@ -90,7 +95,7 @@ Server Framework Features
 
 ## Midddleware
 
-HTTP requests and answers are modified, managed, and intercepted by web application middleware. Its ability to intercept data both ways improves code modularity by allowing function reuse across logging, error handling, and authentication. Middleware functions establish a chain of responsibility where each function can end the request-response cycle or pass control. This system handles static files, parses request bodies, manages sessions, implements CORS, and logs, improving web application performance and scalability.
+HTTP requests and response are modified, managed, and intercepted by web application middleware. Its ability to intercept data both ways improves code modularity by allowing function reuse across logging, error handling, and authentication. Middleware functions establish a chain of responsibility where each function can end the request-response cycle or pass control. This system handles static files, parses request bodies, manages sessions, implements CORS, and logs, improving web application performance and scalability.
 
 ### Middleware in NestJS
 
@@ -183,11 +188,14 @@ CORS resolves the web's same-origin policy restrictions that limit resource shar
 Technically, the process of routing in web frameworks involves associating incoming HTTP requests with corresponding handlers based on URL patterns and methods. It requires setting up defined paths which are then linked to specific functions, triggering the appropriate response when requests match these predefined routes.
 
 ```python
+// python routing example
 if __name__ == "__main__":
     #... setup code
     if request.path == '/' and request.method == 'GET':
         # handle home route
 ```
+
+
 This code implementation addressed some key features, albeit in a more rudimentary way compared say ExpressJS and NestJS which provide  a structured and more feature-rich approaches.
 
 
@@ -241,6 +249,7 @@ Server Language Features
 NestJS leverages TypeScript decorators to give modular and maintainable functionality to classes and functions. The @ symbol is followed by an expression that evaluates to a function that executes at runtime with class or property information. It improves code readability and maintainability by letting developers declaratively define behaviour like routing pathways and dependency injection in the class description.
 
 ```typescript
+// NestJS decorator example
 @Controller('users')
 export class UsersController {
     @Get()
