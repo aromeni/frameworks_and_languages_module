@@ -3,7 +3,7 @@ Technical Report
 
 The purpose of this report is to analyse and evaluate a server/client prototype created without web development frameworks. The implications, challenges, and potential drawbacks of a "framework-less" development style have been carefully examined in this prototype. The report highlights crucial areas where the lack of frameworks affects application development, including maintainability, scalability, efficiency, and security.
 
-In an era where web development frameworks like Flask, React, Vue.js, and Express.js have become fundamental tools for developers, this report scrutinizes how their absence can hinder the development process. These frameworks provide essential features – robust security, modular architectures, middleware, and efficient state management – which are pivotal for crafting sophisticated, user-oriented web applications.
+In an era where web development frameworks like NestJS, NextJs, Django, React, Vue.js, and Express.js etc have become fundamental tools for developers, this report scrutinizes how their absence can hinder the development process. These frameworks provide essential features – robust security, modular architectures, middleware, and efficient state management – which are pivotal for crafting sophisticated, user-oriented web applications.
 
 By examining specific shortcomings in the framework-less prototype and comparing them with framework-supported methodologies, the report delineates the operational benefits and enhanced productivity provided by modern frameworks. The critique encompasses a thorough investigation of issues on both the client and server sides, including illustrative code snippets and discussions on why certain practices fall short of framework-based standards.
 
@@ -85,7 +85,7 @@ Why This Pattern Is Problematic:
 The prototype/framework-less implementation provides granular control but struggles with maintainability, scalability, and security. Manual DOM manipulations, unstructured state management, and poor request handling raise bug and vulnerability risk. Lack of established patterns and features makes a codebase hard to extend and adapt to complex needs.
 
 - Suggested Direction - Frameworks:
-Using frameworks like React for the client-side and Express.js or Flask for the server-side is highly recommended. They provide organized state management, component-based structures, and optimized request processing, community support, along with robust security and rich libraries. This accelerates development and ensures maintainable, high-performing applications that adhere to modern standards.
+Using frameworks like React for the client-side and Express.js or NestJS for the server-side is highly recommended. They provide organized state management, component-based structures, and optimized request processing, community support, along with robust security and rich libraries. This accelerates development and ensures maintainable, high-performing applications that adhere to modern standards.
 
 
 
@@ -427,11 +427,12 @@ Conclusions
 
 #### Why frameworks are recommended
 
-Incorporating frameworks in web development is highly recommended for their structured approach that significantly boosts efficiency, maintainability, and scalability. Client-side frameworks like React and Vue.js, along with server-side ones such as Express.js and Flask, bring invaluable features such as integrated state management, reactive data binding, and efficient routing. They simplify complex tasks like asynchronous processing and middleware management, and offer essential security features. By fostering best practices, frameworks enhance the reliability and security of applications. Their comprehensive tool sets and community support streamline the development process, enabling the creation of sophisticated, high-quality web applications that meet modern standards and user expectations.\
+Incorporating frameworks in web development is highly recommended for their structured approach that significantly boosts efficiency, maintainability, and scalability. Client-side frameworks like React and Vue.js, along with server-side ones such as Express.js and NestJS, bring invaluable features such as integrated state management, reactive data binding, and efficient routing. They simplify complex tasks like asynchronous processing and middleware management, and offer essential security features. By fostering best practices, frameworks enhance the reliability and security of applications. Their comprehensive tool sets and community support streamline the development process, enabling the creation of sophisticated, high-quality web applications that meet modern standards and user expectations.\
 
 
 #### Which frameworks should be used and why
 
-Choosing the right web development framework depends on the project type, desired features, and the development team's expertise. For client-side development, React and Vue.js are top contenders. React, with its JSX syntax and hooks, is ideal for dynamic UIs and complex applications due to its component-based architecture. Vue.js is appreciated for its simplicity and reactive data binding, suitable for a variety of project sizes. On the server side, Express.js offers efficiency and scalability for Node.js applications, particularly for RESTful APIs and SPAs, while Flask's simplicity and extensibility make it a go-to for small to medium-sized Python projects. The selection should be guided by the project's specific needs and the team's familiarity with the frameworks, ensuring an efficient development process and successful outcome.
+Choosing the right web development framework depends on the project type, desired features, and the development team's expertise. For client-side development, React and Vue.js are top contenders. React, with its JSX syntax and hooks, is ideal for dynamic UIs and complex applications due to its component-based architecture. Vue.js is appreciated for its simplicity and reactive data binding, suitable for a variety of project sizes. On the server side, Express.js offers efficiency and scalability for Node.js applications, particularly for RESTful APIs and SPAs, while NestJS's 
+ or even Flask's simplicity and extensibility make it a go-to for small to medium-sized Python projects. The selection should be guided by the project's specific needs and the team's familiarity with the frameworks, ensuring an efficient development process and successful outcome.
 
 
